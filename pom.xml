@@ -32,13 +32,13 @@
       <artifactId>spring-beans</artifactId>
       <version>5.3.5</version>
     </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-      <version>5.3.5</version>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.38</version>
     </dependency>
+
 
     <dependency>
       <groupId>junit</groupId>

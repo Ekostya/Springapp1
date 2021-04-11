@@ -3,16 +3,15 @@ package ru;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
 @Component
 @Scope("prototype")
 public class ClassicalMusic implements Music {
-
-    @PostConstruct
+@PostConstruct
     public void doMyInit() {
         System.out.println("Doing my initialization");
     }
-    
-    @PreDestroy
+@PreDestroy
     public void doMyDestroy() {
         System.out.println("Doing my destruction");
     }
