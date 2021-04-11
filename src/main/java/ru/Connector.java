@@ -20,11 +20,8 @@ public class Connector {
             String name = resultSet.getString(2);
             String password = resultSet.getString(3);
             String email=resultSet.getString(4);
-            System.out.printf("id: %d, name: %s, password: %s %n,email %s %n", id, name,password,email);
+            System.out.printf("id: %d, name: %s, password: %s %n,email: %s %n", id, name,password,email);
         }
-
-
-            statement.execute("select * from user");
             statement.close();
             connection.close();
         }
