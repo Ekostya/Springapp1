@@ -1,10 +1,9 @@
 package ru;
 
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
+//import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.Connection;
 import java.sql.Driver;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connect {
@@ -15,33 +14,33 @@ private static final String URL="jdbc:mysql://localhost/Book?serverTimezone=UTC"
         Connection connection = null;
         Driver driver = null;
 
-        try {
+       // try {
 
-                driver = new FabricMySQLDriver();
-        }
-            catch (SQLException e){
-                System.out.println("Error Create Driver");
+             //   driver = new FabricMySQLDriver();
+       // }
+         //  catch (SQLException e){
+            //    System.out.println("Error Create Driver");
             }
-        try{
-            DriverManager.registerDriver(driver);
-        }
-        catch (SQLException e){
-            System.out.println("Don t Register Driver");
-        }
-        try {
+     //  try{
+        //    DriverManager.registerDriver(driver);
+     //   }
+       // catch (SQLException e){
+      //      System.out.println("Don t Register Driver");
+      //  }
+       // try {
 
 
-        connection=DriverManager.getConnection(URL,USERNAME,PASSWORD);
-            System.out.println("code.....");
+       // connection=DriverManager.getConnection(URL,USERNAME,PASSWORD);
+        //    System.out.println("code.....");
     }
-        catch (SQLException e){
-            System.out.println("Create Connection");
-            return;
-        }
-        finally {
-            if(connection !=null)
-                connection.close();
-        }
-        }
-    }
+       // catch (SQLException e){
+        //    System.out.println("Create Connection");
+        //    return;
+      //  }
+       // finally {
+         //  if(connection !=null)
+        //       connection.close();
+       // }
+      //  }
+  //  }
 
