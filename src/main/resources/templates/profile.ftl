@@ -1,4 +1,4 @@
-<#import "parts/common.ftl" as c>
+<#import "parts/Common.ftl" as c>
 
 <@c.page>
 <h5>${username}</h5>
