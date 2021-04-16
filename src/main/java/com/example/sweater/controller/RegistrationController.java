@@ -1,8 +1,8 @@
 package com.example.sweater.controller;
 
+import com.example.sweater.Service.UserService;
+import com.example.sweater.domain.Dto.CaptchaResponseDto;
 import com.example.sweater.domain.User;
-import com.example.sweater.domain.dto.CaptchaResponseDto;
-import com.example.sweater.service.UserSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class RegistrationController {
     private final static String CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 
     @Autowired
-    private UserSevice userSevice;
+    private UserService userSevice;
 
     @Value("${recaptcha.secret}")
     private String secret;
