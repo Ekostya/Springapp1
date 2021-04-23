@@ -1,8 +1,7 @@
 package com.example.sweater.controller;
 
-import com.example.sweater.Service.UserService;
-import com.example.sweater.domain.Dto.CaptchaResponseDto;
 import com.example.sweater.domain.User;
+import com.example.sweater.domain.Dto.CaptchaResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -24,7 +23,7 @@ public class RegistrationController {
     private final static String CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 
     @Autowired
-    private UserService userSevice;
+    private UserSevice userSevice;
 
     @Value("${recaptcha.secret}")
     private String secret;
@@ -39,7 +38,7 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(
-            @RequestParam("password") String passwordConfirm,
+            @RequestParam("password2") String passwordConfirm,
             @RequestParam("g-recaptcha-response") String captchaResponse,
             @Valid User user,
             BindingResult bindingResult,
@@ -55,7 +54,7 @@ public class RegistrationController {
         boolean isConfirmEmpty = StringUtils.isEmpty(passwordConfirm);
 
         if (isConfirmEmpty) {
-            model.addAttribute("passwordError", "Password confirmation cannot be empty");
+            model.addAttribute("password2Error", "Password confirmation cannot be empty");
         }
 
         if (user.getPassword() != null && !user.getPassword().equals(passwordConfirm)) {
@@ -91,5 +90,11 @@ public class RegistrationController {
         }
 
         return "login";
+    }
+
+    private class CaptchaResponseDto {
+    }
+
+    private class UserSevice {
     }
 }

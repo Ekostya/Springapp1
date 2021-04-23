@@ -1,5 +1,4 @@
-package com.example.sweater.Service;
-
+import com.example.sweater.Service.MailSender;
 import com.example.sweater.domain.Role;
 import com.example.sweater.domain.User;
 import com.example.sweater.repos.UserRepo;
@@ -21,7 +20,7 @@ public class UserService implements UserDetailsService {
     private UserRepo userRepo;
 
     @Autowired
-    private com.example.sweater.Service.MailSender mailSender;
+    private MailSender mailSender;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
