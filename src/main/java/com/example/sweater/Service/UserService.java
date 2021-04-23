@@ -21,7 +21,7 @@ public class UserService implements UserDetailsService {
     private UserRepo userRepo;
 
     @Autowired
-    private com.example.sweater.service.MailSender mailSender;
+    private com.example.sweater.Service.MailSender mailSender;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
