@@ -1,8 +1,8 @@
 package com.example.sweater.controller;
 
-import com.example.sweater.Service.UserSevice;
 import com.example.sweater.domain.Role;
 import com.example.sweater.domain.User;
+import com.example.sweater.Service.UserSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,15 +16,14 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserSevice userService;
+    private UserSevice userSevice;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public String userList(Model model) {
-        Model users = model.addAttribute("users",
-                userService.findAll());
+        model.addAttribute("users", userSevice.findAll());
 
-        return "userList";
+        return "userlist.ftl";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -43,7 +42,7 @@ public class UserController {
             @RequestParam Map<String, String> form,
             @RequestParam("userId") User user
     ) {
-        userService.saveUser(user, username, form);
+        userSevice.saveUser(user, username, form);
 
         return "redirect:/user";
     }
@@ -62,7 +61,7 @@ public class UserController {
             @RequestParam String password,
             @RequestParam String email
     ) {
-        userService.updateProfile(user, password, email);
+        userSevice.updateProfile(user, password, email);
 
         return "redirect:/user/profile";
     }
