@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvсConfig implements WebMvcConfigurer {
+
     @Value("${upload.path}")
     private String uploadPath;
 

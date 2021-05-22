@@ -1,4 +1,4 @@
-package com.example.sweater.Service;
+package com.example.sweater.service;
 
 import com.example.sweater.domain.Role;
 import com.example.sweater.domain.User;
@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserSevice implements UserDetailsService {
+
     @Autowired
     private UserRepo userRepo;
 
@@ -31,6 +32,9 @@ public class UserSevice implements UserDetailsService {
 
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
+        }
+        if(user.isActive()){
+            throw new UsernameNotFoundException("User is not activate");
         }
 
         return user;
@@ -56,6 +60,7 @@ public class UserSevice implements UserDetailsService {
     }
 
     private void sendMessage(User user) {
+
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
@@ -75,7 +80,8 @@ public class UserSevice implements UserDetailsService {
             return false;
         }
 
-        user.setActivationCode(null);
+        user.setActive(false);
+       // user.setActivationCode(null);
 
         userRepo.save(user);
 

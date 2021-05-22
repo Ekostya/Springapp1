@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
+
     @Autowired
     private MessageRepo messageRepo;
 
@@ -38,6 +39,7 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
+
         Iterable<Message> messages = messageRepo.findAll();
 
         if (filter != null && !filter.isEmpty()) {
@@ -58,9 +60,8 @@ public class MainController {
             @Valid Message message,
             BindingResult bindingResult,
             Model model,
-            @RequestParam("file") MultipartFile file
-    ) throws IOException {
-        message.setAuthor(user);
+            @RequestParam("file") MultipartFile file) throws IOException {
+             message.setAuthor(user);
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
