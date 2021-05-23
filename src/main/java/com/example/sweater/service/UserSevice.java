@@ -54,25 +54,10 @@ public class UserSevice implements UserDetailsService {
 
         userRepo.save(user);
 
-        sendMessage(user);
+       // sendMessage(user);
 
         return true;
     }
-
-    private void sendMessage(User user) {
-
-        if (!StringUtils.isEmpty(user.getEmail())) {
-            String message = String.format(
-                    "Hello, %s! \n" +
-                            "Welcome to Sweater. Please, visit next link: http://localhost:8080/activate/%s",
-                    user.getUsername(),
-                    user.getActivationCode()
-            );
-
-            mailSender.send(user.getEmail(), "Activation code", message);
-        }
-    }
-
     public boolean activateUser(String code) {
         User user = userRepo.findByActivationCode(code);
 
@@ -80,8 +65,8 @@ public class UserSevice implements UserDetailsService {
             return false;
         }
 
-        user.setActive(false);
-       // user.setActivationCode(null);
+        user.setActive(true);
+       user.setActivationCode(null);
 
         userRepo.save(user);
 
@@ -130,8 +115,6 @@ public class UserSevice implements UserDetailsService {
 
         userRepo.save(user);
 
-        if (isEmailChanged) {
-            sendMessage(user);
-        }
+
     }
 }

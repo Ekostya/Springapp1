@@ -34,11 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
-              //  .defaultSuccessUrl("/",true)
+               .defaultSuccessUrl("/main",true)
                 .and()
                 .logout()
                 .permitAll();
-             //   .logoutSuccessUrl("");
+
     }
 
     @Override
